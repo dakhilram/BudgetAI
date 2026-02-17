@@ -38,6 +38,11 @@ api_router = APIRouter(prefix="/api")
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
+# Health check endpoint
+@api_router.get("/")
+async def root():
+    return {"message": "Budget Planner API", "status": "ok"}
+
 # ==================== MODELS ====================
 
 class UserRegister(BaseModel):
